@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tendance360</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Tendance360</h1>
+    <nav>
+      <ul>
+        <li><a href="#produits">Produits</a></li>
+        <li><a href="#panier">Panier</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="produits">
+    <h2>Produits Tendance</h2>
+    <div class="grid" id="liste-produits"></div>
+  </section>
+
+  <section id="panier">
+    <h2>Votre Panier</h2>
+    <ul id="contenu-panier"></ul>
+    <p id="total">Total: 0 €</p>
+    <form action="/paiement" method="POST">
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_1234567890abcdef"
+        data-amount="999"
+        data-name="Tendance360"
+        data-description="Paiement sécurisé"
+        data-currency="eur">
+      </script>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Nom" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tendance360</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
