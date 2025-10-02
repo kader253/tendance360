@@ -1,0 +1,49 @@
+const produits = [
+  { nom: "Gummies mélatonine", prix: 14.99 },
+  { nom: "Sérum acide hyaluronique", prix: 19.99 },
+  { nom: "Tapis de yoga antidérapant", prix: 29.99 },
+  { nom: "Coque de téléphone éco", prix: 12.99 },
+  { nom: "Sweat oversize tie&dye", prix: 39.99 },
+  { nom: "Bougie parfumée artisanale", prix: 17.99 },
+  { nom: "Patchs thermiques réutilisables", prix: 9.99 },
+  { nom: "Écouteurs Bluetooth", prix: 49.99 },
+  { nom: "Sac banane tendance", prix: 24.99 },
+  { nom: "Friteuse à air compacte", prix: 59.99 }
+];
+
+let panier = [];
+
+function afficherProduits() {
+  const liste = document.getElementById("liste-produits");
+  produits.forEach((produit, index) => {
+    const div = document.createElement("div");
+    div.className = "produit";
+    div.innerHTML = `
+      <h3>${produit.nom}</h3>
+      <p>${produit.prix.toFixed(2)} €</p>
+      <button onclick="ajouterAuPanier(${index})">Ajouter au panier</button>
+    `;
+    liste.appendChild(div);
+  });
+}
+
+function ajouterAuPanier(index) {
+  panier.push(produits[index]);
+  afficherPanier();
+}
+
+function afficherPanier() {
+  const contenu = document.getElementById("contenu-panier");
+  const total = document.getElementById("total");
+  contenu.innerHTML = "";
+  let somme = 0;
+  panier.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.nom} - ${item.prix.toFixed(2)} €`;
+    contenu.appendChild(li);
+    somme += item.prix;
+  });
+  total.textContent = `Total: ${somme.toFixed(2)} €`;
+}
+
+afficherProduits();
